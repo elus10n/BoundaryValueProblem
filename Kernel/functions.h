@@ -14,7 +14,7 @@ namespace MATH
         const double thetta1 = 1.0;
         const double thetta2 = 1.0;
 
-        const double mu1 = 1.0;
+        const double mu1 = 2.0;
         const double mu2 = 1.0;
     }
 
