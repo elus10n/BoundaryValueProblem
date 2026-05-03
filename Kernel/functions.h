@@ -7,7 +7,7 @@ namespace MATH
 {
     namespace CONST
     {
-        const double ksi = 0.57735; // 1/sqrt(3)
+        const double ksi = 1.0 / std::sqrt(3.0); 
 
         const double gamma1 = 1.0;
         const double gamma2 = 1.0;
@@ -40,11 +40,11 @@ namespace MATH
 
 
         const double k1_test = 1.0;
-        const double q1_test = 0.33333;
-        const double f1_test = - 0.66666;
+        const double q1_test = 1.0 / 3.0;
+        const double f1_test = (1.0 / 3.0) - 1.0;
 
-        const double k2_test = 1.39561;
-        const double q2_test = 1.11111;
+        const double k2_test = std::exp(1.0 / 3.0);
+        const double q2_test = 1.0 + 1.0 / 9.0;
         const double f2_test = 1.0;
 
         double function_k_test(double x) 
