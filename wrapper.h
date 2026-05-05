@@ -79,45 +79,38 @@ FrontendOutput Wrapper(std::unique_ptr<WrapperInterface> wrapper)
     TYPE type = wrapper->get_type();
     Solver solver = wrapper->get_solver();
 
-    if(type == TYPE::MAIN)
+    while(true)
     {
-        while(true)
-        {
-            numerical = solver(n);
-            to_compare = solver(2*n);
-            auto eps_analyzis = get_epsilon(numerical, to_compare, type);
-            curr_epsilon = eps_analyzis.diff;
+        numerical = solver(n);
 
-            if(curr_epsilon > MATH::CONST::required_epsilon) 
+        switch(type)
+        {
+            case TYPE::MAIN :
             {
-                n *= 2;
-                continue;
+                to_compare = solver(2*n);
+                break;
             }
-
-            max_defl_idx = eps_analyzis.x_idx;
-            break;
-        }
-    }
-    else if(type == TYPE::TEST)
-    {
-        while(curr_epsilon > MATH::CONST::required_epsilon)
-        {
-            AnalyticSolver analytic_func = wrapper->get_af().value();
-
-            numerical = solver(n);
-            to_compare = analytic_func(n);
-            auto eps_analyzis = get_epsilon(numerical, to_compare, type);
-            curr_epsilon = eps_analyzis.diff;
-
-            if(curr_epsilon > MATH::CONST::required_epsilon) 
+            case TYPE::TEST :
             {
-                n *= 2;
-                continue;
-            };
-
-            max_defl_idx = eps_analyzis.x_idx;
-            break;
+                AnalyticSolver analytic_func = wrapper->get_af().value();
+                
+                to_compare = analytic_func(n);
+                break;
+            }
+            default : throw std::runtime_error("Unknow task type");
         }
+
+        auto eps_analyzis = get_epsilon(numerical, to_compare, type);
+        curr_epsilon = eps_analyzis.diff;
+
+        if(curr_epsilon > MATH::CONST::required_epsilon) 
+        {
+            n *= 2;
+            continue;
+        }
+
+        max_defl_idx = eps_analyzis.x_idx;
+        break;
     }
 
     std::vector<double> grid = get_grid(n);
