@@ -1,5 +1,4 @@
-#ifndef INTEGRATOR_H
-#define INTEGRATOR_H
+#pragma once
 
 #include <functional>
 #include "functions.h"
@@ -25,5 +24,3 @@ namespace INTEGRATOR {
         return 1.0 / (integral / h);
     }
 }
-
-#endif

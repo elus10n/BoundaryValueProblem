@@ -1,5 +1,4 @@
-#ifndef SOLVER_WRAPPERS_H
-#define SOLVER_WRAPPERS_H
+#pragma once
 
 #include <functional>
 #include <optional>
@@ -39,5 +38,3 @@ class Task4Wrapper : public WrapperInterface
     public:
     Task4Wrapper() : WrapperInterface(TYPE::MAIN, TASK4::solve_mixed_main) {}
 };
-
-#endif

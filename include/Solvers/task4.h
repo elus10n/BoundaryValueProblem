@@ -1,5 +1,4 @@
-#ifndef TASK4_H
-#define TASK4_H
+#pragma once
 
 #include <vector>
 #include <functional>
@@ -49,5 +48,3 @@ namespace TASK4
         return solve_thomas(sys);
     }
 }
-
-#endif

@@ -1,5 +1,4 @@
-#ifndef FUNCTIONS_H
-#define FUNCTIONS_H
+#pragma once
 
 #include <cmath>
 
@@ -65,5 +64,3 @@ namespace MATH
         }
     }
 }
-
-#endif

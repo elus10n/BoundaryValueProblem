@@ -1,5 +1,4 @@
-#ifndef THOMAS_H
-#define THOMAS_H
+#pragma once 
 
 #include <vector>
 #include <stdexcept>
@@ -40,6 +39,3 @@ std::vector<double> solve_thomas(const TridiagonalSystem& sys)
 
     return v;
 }
-
-
-#endif

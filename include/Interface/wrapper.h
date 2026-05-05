@@ -1,11 +1,10 @@
-#ifndef WRAPPER_H
-#define WRAPPER_H
+#pragma once 
 
 #include <vector>
 #include <memory>
 #include <iostream>
 
-#include "Solvers/solver_wrappers.h"
+#include "../Solvers/solver_wrappers.h"
 
 struct FrontendOutput
 {
@@ -120,5 +119,3 @@ FrontendOutput Wrapper(std::unique_ptr<WrapperInterface> wrapper)
     FrontendOutput output{n, curr_epsilon, max_defl_point, grid, grid2, to_compare, numerical};
     return output;
 }
-
-#endif 
