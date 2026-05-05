@@ -16,6 +16,8 @@ namespace MATH
 
         const double mu1 = 2.0;
         const double mu2 = 1.0;
+
+        const double required_epsilon = 0.5 * 1e-6;
     }
 
     namespace FUNC

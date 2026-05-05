@@ -1,23 +1,31 @@
 #include <iostream>
 #include <vector>
+#include <memory>
 
-#include "Kernel/thomas.h"
+#include "wrapper.h"
 
 
 int main()
 {
-    std::vector<double> a{0,1,1,-1}; // Нижняя диагональ (индексы 1...n)
-    std::vector<double> c{2,4,4,2}; // Главная диагональ (индексы 0...n)
-    std::vector<double> b{-1,-1,-1,0}; // Верхняя диагональ (индексы 0...n-1)
-    std::vector<double> f{5,10,10,5}; // Правая часть (индексы 0...n)
+    // пример для того, кто будет фронт делать. В структуре есть все необходимое
+    std::unique_ptr<WrapperInterface> task4 = std::make_unique<Task4Wrapper>();
+    FrontendOutput output4 = Wrapper(std::move(task4));
 
-    TridiagonalSystem data(4);
-    data.a = a;
-    data.b = b;
-    data.c = c;
-    data.f = f;
-
-    std::vector<double> result = solve_thomas(data);
-    for(auto elem : result) 
+    for(const auto elem : output4.grid)
         std::cout << elem << " ";
+    std::cout << std::endl;
+    std::cout << std::endl;
+    std::cout << std::endl;
+
+    for(const auto elem : output4.grid2.value())
+        std::cout << elem << " ";
+    std::cout << std::endl;
+    std::cout << std::endl;
+    std::cout << std::endl;
+
+    for(const auto elem : output4.numerical)
+        std::cout << elem << " ";
+    std::cout << std::endl;
+
+    std::cout << output4.epsilon << " " << output4.x_max_deflection << std::endl;
 }
