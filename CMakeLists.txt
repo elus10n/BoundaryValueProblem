@@ -17,6 +17,9 @@ include_directories(
 
 add_executable(${PROJECT_NAME}
     src/main.cpp
+    src/mainwindow.cpp
+    src/mainwindow.h
+    src/mainwindow.ui
     include/Interface/wrapper.h
     include/Kernel/functions.h
     include/Kernel/integrator.h
@@ -24,6 +27,7 @@ add_executable(${PROJECT_NAME}
     include/Solvers/solver_wrappers.h
     include/Solvers/task1.h
     include/Solvers/task4.h
+    src/mainwindow.h src/mainwindow.cpp src/mainwindow.ui
 )
 
 target_link_libraries(${PROJECT_NAME} PRIVATE Qt6::Widgets)
