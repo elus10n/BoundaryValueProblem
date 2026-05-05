@@ -83,8 +83,6 @@ FrontendOutput Wrapper(std::unique_ptr<WrapperInterface> wrapper)
     {
         while(true)
         {
-            std::cout << n << std::endl;
-            std::cout << curr_epsilon << std::endl;
             numerical = solver(n);
             to_compare = solver(2*n);
             auto eps_analyzis = get_epsilon(numerical, to_compare, type);

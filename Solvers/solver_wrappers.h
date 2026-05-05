@@ -23,7 +23,7 @@ class WrapperInterface
 
     public:
 
-    WrapperInterface(TYPE type, Solver solver, std::optional<AnalyticSolver> af = std::nullopt) : type_(type), solver_(solver) {}
+    WrapperInterface(TYPE type, Solver solver, std::optional<AnalyticSolver> af = std::nullopt) : type_(type), solver_(solver), analytic_func_(af) {}
 
     TYPE get_type() const { return type_;}
 
