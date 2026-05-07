@@ -3,6 +3,7 @@
 #include <functional>
 #include <optional>
 
+#include "task2.h"
 #include "task4.h"
 
 using Solver = std::function<std::vector<double>(int)>;
@@ -37,4 +38,10 @@ class Task4Wrapper : public WrapperInterface
 {
     public:
     Task4Wrapper() : WrapperInterface(TYPE::MAIN, TASK4::solve_mixed_main) {}
+};
+
+class Task2Wrapper : public WrapperInterface
+{
+    public:
+    Task2Wrapper() : WrapperInterface(TYPE::MAIN, TASK2::solve_default_main) {}
 };
