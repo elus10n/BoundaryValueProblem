@@ -24,6 +24,7 @@ add_executable(${PROJECT_NAME}
     src/Kernel/thomas.cpp
     src/Solvers/task1.cpp
     src/Solvers/task2.cpp
+    src/Solvers/task3.cpp
     src/Solvers/task4.cpp
     src/Interface/wrapper.cpp
 )
