@@ -45,9 +45,14 @@ void MainWindow::onSolveClicked()
     try {
         std::unique_ptr<WrapperInterface> wrapper;
 
-        if (ui->taskComboBox->currentIndex() == 3) {
+        switch(ui->taskComboBox->currentIndex()) {
+        case 1:
+            wrapper = std::make_unique<Task2Wrapper>();
+            break;
+        case 3:
             wrapper = std::make_unique<Task4Wrapper>();
-        } else {
+            break;
+        default:
             throw std::runtime_error("error");
         }
 
