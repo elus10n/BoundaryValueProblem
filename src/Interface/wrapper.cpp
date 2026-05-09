@@ -45,13 +45,13 @@ std::vector<double> get_grid(int n)
     return output;
 }
 
-FrontendOutput Wrapper(std::unique_ptr<WrapperInterface> wrapper)
+FrontendOutput Wrapper(std::unique_ptr<WrapperInterface> wrapper, int start_n, bool auto_calc)
 {
 
     std::vector<double> numerical;
     std::vector<double> to_compare;
 
-    int n = 10;
+    int n = start_n;
     double curr_epsilon = 1;
     int max_defl_idx = -1;
 
@@ -81,14 +81,17 @@ FrontendOutput Wrapper(std::unique_ptr<WrapperInterface> wrapper)
 
         auto eps_analyzis = get_epsilon(numerical, to_compare, type);
         curr_epsilon = eps_analyzis.diff;
+        max_defl_idx = eps_analyzis.x_idx;
 
-        if(curr_epsilon > MATH::CONST::required_epsilon)
+        if(auto_calc && curr_epsilon > MATH::CONST::required_epsilon)
         {
+            if (n >= 500000) {
+                break;
+            }
             n *= 2;
             continue;
         }
 
-        max_defl_idx = eps_analyzis.x_idx;
         break;
     }
 
