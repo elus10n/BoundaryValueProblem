@@ -7,9 +7,9 @@ namespace MATH
         const double ksi = 1.0 / std::sqrt(3.0);
 
         const double gamma1 = 1.0;
-        const double gamma2 = 1.0;
-        const double thetta1 = 1.0;
-        const double thetta2 = 1.0;
+        const double gamma2 = 2.0;
+        const double thetta1 = 3.0;
+        const double thetta2 = 4.0;
 
         const double mu1 = 2.0;
         const double mu2 = 1.0;
