@@ -34,4 +34,19 @@ namespace TASK1
 
         return solve_thomas(sys);
     }
+
+    std::vector<double> solve_anal_test(int n) 
+    {
+        const double L = 1.0; 
+        const double h = L / n;
+
+        std::vector<double> anal(n + 1);
+        for (int i = 0; i <= n; ++i) {
+            double x_i = i * h;
+            double val = MATH::FUNC::function_u_anal(x_i);
+            anal[i] = val;
+        }
+
+        return anal;
+    }
 }

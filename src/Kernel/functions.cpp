@@ -23,6 +23,15 @@ namespace MATH
         double function_q_main(double x) { return (x < CONST::ksi) ? (x * x) : (1.0 + std::pow(x, 4)); }
         double function_f_main(double x) { return (x < CONST::ksi) ? (x * x - 1.0) : 1.0; }
 
+        double function_u_anal(double x) {
+            if (x < CONST::ksi) {
+                double func1 = 0.587133640028620 * std::exp(x / std::sqrt(3.0)) + 3.412866359971380 * std::exp(-x / std::sqrt(3.0)) - 2;
+                return func1;
+            } else {
+                double func2 = -0.116209345000844 * std::exp(x * (std::sqrt(10) / 3.0) * std::exp(-1.0 / 6.0)) + 0.936306880621531 * std::exp(-x * (std::sqrt(10) / 3.0) * std::exp(-1.0 / 6.0)) + 0.9;
+                return func2;
+            }
+        }
 
 
         const double k1_test = 1.0;
