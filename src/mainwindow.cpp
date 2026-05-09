@@ -45,20 +45,18 @@ void MainWindow::onSolveClicked()
     try {
         std::unique_ptr<WrapperInterface> wrapper;
 
-        switch(ui->taskComboBox->currentIndex()) {
-        case 1:
-            wrapper = std::make_unique<Task2Wrapper>();
-            break;
-        case 3:
-            wrapper = std::make_unique<Task4Wrapper>();
-            break;
-        default:
-            throw std::runtime_error("error");
-        }
+        int idx = ui->taskComboBox->currentIndex();
+        if (idx == 0)      wrapper = std::make_unique<Task1Wrapper>();
+        else if (idx == 1) wrapper = std::make_unique<Task2Wrapper>();
+        //else if (idx == 2) wrapper = std::make_unique<Task3Wrapper>();
+        else if (idx == 3) wrapper = std::make_unique<Task4Wrapper>();
 
         TYPE currentType = wrapper->get_type();
 
-        FrontendOutput result = Wrapper(std::move(wrapper));
+        int input_n = ui->nSpinBox->value();
+        bool is_auto = ui->autoCalcCheckBox->isChecked();
+
+        FrontendOutput result = Wrapper(std::move(wrapper), input_n, is_auto);
 
         updateInfo(result, currentType);
         updateTable(result, currentType);
@@ -113,14 +111,21 @@ void MainWindow::updateTable(const FrontendOutput& data, TYPE taskType)
         double diff = std::abs(v1 - v2);
 
         ui->tableWidget->setItem(row, 0, new QTableWidgetItem(QString::number(i)));
-        ui->tableWidget->setItem(row, 1, new QTableWidgetItem(QString::number(x, 'f', 5)));
-        ui->tableWidget->setItem(row, 2, new QTableWidgetItem(QString::number(v1, 'g', 6)));
-        ui->tableWidget->setItem(row, 3, new QTableWidgetItem(QString::number(v2, 'g', 6)));
-        ui->tableWidget->setItem(row, 4, new QTableWidgetItem(QString::number(diff, 'g', 6)));
+        ui->tableWidget->setItem(row, 1, new QTableWidgetItem(QString::number(x, 'f', 6)));
+        ui->tableWidget->setItem(row, 2, new QTableWidgetItem(QString::number(v1, 'f', 16)));
+        ui->tableWidget->setItem(row, 3, new QTableWidgetItem(QString::number(v2, 'f', 16)));
+        ui->tableWidget->setItem(row, 4, new QTableWidgetItem(QString::number(diff, 'e', 16)));
         row++;
     }
 
-    ui->tableWidget->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
+    QHeaderView* header = ui->tableWidget->horizontalHeader();
+
+    header->setSectionResizeMode(0, QHeaderView::ResizeToContents);
+    header->setSectionResizeMode(1, QHeaderView::ResizeToContents);
+
+    header->setSectionResizeMode(2, QHeaderView::Stretch);
+    header->setSectionResizeMode(3, QHeaderView::Stretch);
+    header->setSectionResizeMode(4, QHeaderView::Stretch);
 }
 
 void MainWindow::updateCharts(const FrontendOutput& data, TYPE taskType)
