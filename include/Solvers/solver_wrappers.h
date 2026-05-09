@@ -3,7 +3,9 @@
 #include <functional>
 #include <optional>
 
+#include "task1.h"
 #include "task2.h"
+#include "task3.h"
 #include "task4.h"
 
 using Solver = std::function<std::vector<double>(int)>;
@@ -34,14 +36,24 @@ class WrapperInterface
 };
 
 //каждый должен наследовать свой класс. Те, у кого ТЕСТОВАЯЯ, должны предоставить сюда функцию, которая вернет вектор с аналитическим решением по размеру сетки 3-м параметром.
-class Task4Wrapper : public WrapperInterface
-{
+
+class Task1Wrapper : public WrapperInterface {
+public:
+    Task1Wrapper() : WrapperInterface(TYPE::TEST, TASK1::solve_default_test, TASK1::solve_anal_test) {}
+};
+
+class Task2Wrapper : public WrapperInterface {
+    public:
+    Task2Wrapper() : WrapperInterface(TYPE::MAIN, TASK2::solve_default_main) {}
+};
+
+// class Task3Wrapper : public WrapperInterface {
+// public:
+//     Task3Wrapper() : WrapperInterface(TYPE::TEST, TASK3::solve_mixed_test, [](int n){ return ANALYTIC::solve_exact(n, 3); }) {}
+// };
+
+class Task4Wrapper : public WrapperInterface {
     public:
     Task4Wrapper() : WrapperInterface(TYPE::MAIN, TASK4::solve_mixed_main) {}
 };
 
-class Task2Wrapper : public WrapperInterface
-{
-    public:
-    Task2Wrapper() : WrapperInterface(TYPE::MAIN, TASK2::solve_default_main) {}
-};
