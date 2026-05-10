@@ -68,7 +68,6 @@ std::vector<double> get_grid(int n)
 
 FrontendOutput Wrapper(std::unique_ptr<WrapperInterface> wrapper)
 {
-
     std::vector<double> numerical;
     std::vector<double> to_compare;
 
