@@ -35,8 +35,6 @@ class WrapperInterface
 
 };
 
-//каждый должен наследовать свой класс. Те, у кого ТЕСТОВАЯЯ, должны предоставить сюда функцию, которая вернет вектор с аналитическим решением по размеру сетки 3-м параметром.
-
 class Task1Wrapper : public WrapperInterface {
 public:
     Task1Wrapper() : WrapperInterface(TYPE::TEST, TASK1::solve_default_test, TASK1::solve_anal_test) {}
@@ -47,10 +45,10 @@ class Task2Wrapper : public WrapperInterface {
     Task2Wrapper() : WrapperInterface(TYPE::MAIN, TASK2::solve_default_main) {}
 };
 
-// class Task3Wrapper : public WrapperInterface {
-// public:
-//     Task3Wrapper() : WrapperInterface(TYPE::TEST, TASK3::solve_mixed_test, [](int n){ return ANALYTIC::solve_exact(n, 3); }) {}
-// };
+class Task3Wrapper : public WrapperInterface {
+public:
+    Task3Wrapper() : WrapperInterface(TYPE::TEST, TASK3::solve_mixed_test, TASK3::solve_anal_mixed_test) {}
+};
 
 class Task4Wrapper : public WrapperInterface {
     public:

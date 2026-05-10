@@ -85,7 +85,7 @@ FrontendOutput Wrapper(std::unique_ptr<WrapperInterface> wrapper, int start_n, b
 
         if(auto_calc && curr_epsilon > MATH::CONST::required_epsilon)
         {
-            if (n >= 500000) {
+            if (n >= 1000000) {
                 break;
             }
             n *= 2;

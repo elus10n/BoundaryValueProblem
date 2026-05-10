@@ -19,6 +19,7 @@ namespace MATH
         double function_f_main(double x);
 
         double function_u_anal(double x);
+        double function_u_anal_mixed(double x);
 
         extern const double k1_test, q1_test, f1_test;
         extern const double k2_test, q2_test, f2_test;

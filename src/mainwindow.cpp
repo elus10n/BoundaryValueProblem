@@ -48,7 +48,7 @@ void MainWindow::onSolveClicked()
         int idx = ui->taskComboBox->currentIndex();
         if (idx == 0)      wrapper = std::make_unique<Task1Wrapper>();
         else if (idx == 1) wrapper = std::make_unique<Task2Wrapper>();
-        //else if (idx == 2) wrapper = std::make_unique<Task3Wrapper>();
+        else if (idx == 2) wrapper = std::make_unique<Task3Wrapper>();
         else if (idx == 3) wrapper = std::make_unique<Task4Wrapper>();
 
         TYPE currentType = wrapper->get_type();
