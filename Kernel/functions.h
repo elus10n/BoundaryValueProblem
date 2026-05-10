@@ -50,6 +50,16 @@ namespace MATH
             }
         }
 
+        double function_u_anal_mixed(double x) {            
+            if (x < CONST::ksi) {
+                double func1 = 1.2898875281755200 * std::exp(x / std::sqrt(3.0)) + 2.8253301199548775 * std::exp(-x / std::sqrt(3.0)) - 2;
+                return func1;
+            } else {
+                double func2 = 0.2441856743201989 * std::exp(x * (std::sqrt(10) / 3.0) * std::exp(-1.0 / 6.0)) + 0.8600757291595192 * std::exp(-x * (std::sqrt(10) / 3.0) * std::exp(-1.0 / 6.0)) + 0.9;
+                return func2;
+            }
+        }
+
         const double k1_test = 1.0;
         const double q1_test = 1.0 / 3.0;
         const double f1_test = (1.0 / 3.0) - 1.0;

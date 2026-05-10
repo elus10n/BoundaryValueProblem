@@ -4,6 +4,7 @@
 #include <functional>
 #include <optional>
 
+#include "task3.h"
 #include "task4.h"
 
 using Solver = std::function<std::vector<double>(int)>;
@@ -38,6 +39,12 @@ class Task4Wrapper : public WrapperInterface
 {
     public:
     Task4Wrapper() : WrapperInterface(TYPE::MAIN, TASK4::solve_mixed_main) {}
+};
+
+class Task3Wrapper : public WrapperInterface
+{
+    public:
+    Task3Wrapper() : WrapperInterface(TYPE::TEST, TASK3::solve_mixed_test, TASK3::solve_anal_mixed_test) {}
 };
 
 #endif
